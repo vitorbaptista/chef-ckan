@@ -1,0 +1,33 @@
+{
+  "name": "ckan",
+  "description": "Installs and configures CKAN for development.",
+  "long_description": "",
+  "maintainer": "Vitor Baptista",
+  "maintainer_email": "vitor@vitorbaptista.com",
+  "license": "Apache v2.0",
+  "platforms": {
+  },
+  "dependencies": {
+    "git": ">= 0.0.0",
+    "python": ">= 0.0.0",
+    "postgresql": ">= 0.0.0",
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}
+
