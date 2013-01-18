@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 1.9.3
+before_install:
+  - sudo gem install chef --no-ri --no-rdoc
+script: sudo chef-solo -c solo.rb -j solo.json
