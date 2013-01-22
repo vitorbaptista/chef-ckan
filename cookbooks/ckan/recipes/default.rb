@@ -9,6 +9,12 @@ ENV['VIRTUAL_ENV'] = "#{HOME}/pyenv"
 ENV['PATH'] = "#{ENV['VIRTUAL_ENV']}/bin:#{ENV['PATH']}"
 SOURCE_DIR = "#{ENV['VIRTUAL_ENV']}/src/ckan"
 
+# Create user
+user USER do
+  home HOME
+  supports :manage_home => true
+end
+
 # Install Python
 python_virtualenv ENV['VIRTUAL_ENV'] do
   interpreter "python2.7"

@@ -4,7 +4,7 @@
     "recipe[ckan]",
     "recipe[ckan::ckanext]"
   ],
-  "user": "vagrant",
+  "user": "ckan",
   "postgresql": {
     "version": "9.1",
     "ssl": false
