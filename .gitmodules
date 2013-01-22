@@ -13,3 +13,6 @@
 [submodule "cookbooks/postgresql"]
 	path = cookbooks/postgresql
 	url = git://github.com/phlipper/chef-postgresql.git
+[submodule "cookbooks/java"]
+	path = cookbooks/java
+	url = git://github.com/opscode-cookbooks/java.git

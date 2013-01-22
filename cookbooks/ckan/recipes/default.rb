@@ -2,6 +2,7 @@ include_recipe "git"
 include_recipe "python"
 include_recipe "postgresql::server"
 include_recipe "postgresql::libpq"
+include_recipe "java"
 
 USER = node[:user]
 HOME = "/home/#{USER}"
@@ -54,9 +55,12 @@ pg_database "ckantest" do
 end
 
 # Install and configure Solr
-package "openjdk-6-jdk"
 package "solr-jetty"
-cookbook_file "/etc/default/jetty"
+template "/etc/default/jetty" do
+  variables({
+    :java_home => node["java"]["java_home"]
+  })
+end
 execute "setup solr's schema" do
   command "sudo ln -f -s #{SOURCE_DIR}/ckan/config/solr/schema-2.0.xml /etc/solr/conf/schema.xml"
   action :run
