@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+root = File.expand_path("..", __FILE__)
+chef_json = File.join(root, "solo.json")
+
 Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -20,14 +23,12 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 5000, 5000
 
   config.vm.provision :chef_solo do |chef|
-    chef.json = {
-      "user" => "vagrant",
-      "postgresql" => {
-        "ssl" => false
-      }
-    }
-    chef.add_recipe("apt")
-    chef.add_recipe("ckan")
+    chef.cookbooks_path = "cookbooks"
+    chef.json = JSON.parse(File.read(chef_json))
+    chef.json["user"] = "vagrant"
+    chef.json["run_list"].each do |recipe|
+      chef.add_recipe recipe
+    end
   end
 
 end

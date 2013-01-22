@@ -1,0 +1,11 @@
+{
+  "run_list": [
+    "recipe[apt]",
+    "recipe[ckan]"
+  ],
+  "user": "vagrant",
+  "postgresql": {
+    "version": "9.1",
+    "ssl": false
+  }
+}
