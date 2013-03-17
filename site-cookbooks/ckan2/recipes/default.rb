@@ -1,8 +1,11 @@
 include_recipe "git"
+include_recipe "openssl"
 include_recipe "python"
+include_recipe "database"
+include_recipe "database::postgresql"
 include_recipe "postgresql::server"
-include_recipe "postgresql::libpq"
 include_recipe "java"
+
 
 USER = node[:user]
 HOME = "/home/#{USER}"
@@ -26,7 +29,7 @@ python_virtualenv ENV['VIRTUAL_ENV'] do
 end
 
 # Install CKAN Package
-python_pip "git+https://github.com/okfn/ckan.git#egg=ckan" do
+python_pip "git+https://github.com/okfn/ckan.git@release-v2.0#egg=ckan" do
   user USER
   group USER
   virtualenv ENV['VIRTUAL_ENV']
@@ -44,14 +47,54 @@ python_pip "#{SOURCE_DIR}/pip-requirements.txt" do
 end
 
 # Create Database
-pg_user "ckanuser" do
-  privileges :superuser => true, :createdb => true, :login => true
-  password "pass"
+#pg_user "ckanuser" do
+#  privileges :superuser => true, :createdb => true, :login => true
+#  password "pass"
+#end
+
+#pg_database "ckantest" do
+#  owner "ckanuser"
+#  encoding "utf8"
+#end
+
+# create connection info as an external ruby hash
+
+postgresql_connection_info = {:host => "localhost",
+                              :port => node['postgresql']['config']['port'],
+                              :username => 'postgres',
+                              :password => node['postgresql']['password']['postgres']}
+
+
+# create a postgresql user but grant no privileges
+postgresql_database_user 'ckanuser' do
+  connection postgresql_connection_info
+  password 'pass'
+  action :create
 end
 
-pg_database "ckantest" do
-  owner "ckanuser"
-  encoding "utf8"
+# do the same but pass the provider to the database resource
+#database_user 'disenfranchised' do
+#  connection postgresql_connection_info
+#  password 'super_secret'
+#  provider Chef::Provider::Database::PostgresqlUser
+#  action :create
+#end
+
+# create a postgresql database
+#postgresql_database 'ckantest' do
+#  connection ({:host => "127.0.0.1", :port => 5432, :username => 'postgres', :password => node['postgresql']['password']['postgres']})
+#  action :create
+#end
+
+# create a postgresql database with additional parameters
+postgresql_database 'ckantest' do
+  connection ({:host => "127.0.0.1", :port => 5432, :username => 'postgres', :password => node['postgresql']['password']['postgres']})
+  template 'DEFAULT'
+  encoding 'DEFAULT'
+  tablespace 'DEFAULT'
+  connection_limit '-1'
+  owner 'postgres'
+  action :create
 end
 
 # Install and configure Solr

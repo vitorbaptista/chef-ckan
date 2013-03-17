@@ -1,9 +1,9 @@
 {
-  "name": "ckan",
-  "description": "Installs and configures CKAN for development.",
+  "name": "ckan2",
+  "description": "Installs and configures CKAN 2.0 for development.",
   "long_description": "",
-  "maintainer": "Vitor Baptista",
-  "maintainer_email": "vitor@vitorbaptista.com",
+  "maintainer": "Dmitry Kachaev",
+  "maintainer_email": "dmitry.kachaev@gmail.com",
   "license": "Apache v2.0",
   "platforms": {
   },

@@ -1,12 +1,12 @@
 {
-  "run_list": [
-    "recipe[apt]",
-    "recipe[ckan]",
-    "recipe[ckan::ckanext]"
-  ],
+
   "user": "ckan",
   "postgresql": {
+    "password": {
+      "postgres": "iloverandompasswordsbutthiswilldo"
+    },
     "version": "9.1",
     "ssl": false
-  }
+  },
+  "build_essential": {"compiletime":true}
 }
