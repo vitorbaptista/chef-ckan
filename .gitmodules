@@ -1,18 +1,28 @@
 [submodule "cookbooks/python"]
 	path = cookbooks/python
-	url = git://github.com/opscode-cookbooks/python.git
-[submodule "cookbooks/build-essential"]
-	path = cookbooks/build-essential
-	url = git://github.com/opscode-cookbooks/build-essential.git
-[submodule "cookbooks/apt"]
-	path = cookbooks/apt
-	url = git://github.com/opscode-cookbooks/apt.git
-[submodule "cookbooks/git"]
-	path = cookbooks/git
-	url = git://github.com/opscode-cookbooks/git.git
+	url = https://github.com/opscode-cookbooks/python.git
+[submodule "cookbooks/apache2"]
+	path = cookbooks/apache2
+	url = http://github.com/opscode-cookbooks/apache2
 [submodule "cookbooks/postgresql"]
 	path = cookbooks/postgresql
-	url = git://github.com/phlipper/chef-postgresql.git
+	url = http://github.com/opscode-cookbooks/postgresql
+[submodule "cookbooks/apt"]
+	path = cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt
+[submodule "cookbooks/build-essential"]
+	path = cookbooks/build-essential
+	url = https://github.com/opscode-cookbooks/build-essential
+[submodule "cookbooks/git"]
+	path = cookbooks/git
+	url = https://github.com/opscode-cookbooks/git
 [submodule "cookbooks/java"]
 	path = cookbooks/java
-	url = git://github.com/opscode-cookbooks/java.git
+	url = https://github.com/opscode-cookbooks/java.git
+[submodule "cookbooks/openssl"]
+	path = cookbooks/openssl
+	url = http://github.com/opscode-cookbooks/openssl
+[submodule "cookbooks/database"]
+	path = cookbooks/database
+	url = https://github.com/opscode-cookbooks/database.git
+

@@ -1,0 +1,33 @@
+{
+  "name": "ckan2",
+  "description": "Installs and configures CKAN 2.0 for development.",
+  "long_description": "",
+  "maintainer": "Dmitry Kachaev",
+  "maintainer_email": "dmitry.kachaev@gmail.com",
+  "license": "Apache v2.0",
+  "platforms": {
+  },
+  "dependencies": {
+    "git": ">= 0.0.0",
+    "python": ">= 0.0.0",
+    "postgresql": ">= 0.0.0",
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}
+

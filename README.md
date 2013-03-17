@@ -1,8 +1,15 @@
 Chef-CKAN
 =========
 
-This project builds a Virtual Machine with the latest CKAN ready to go. This is
+This project builds a Virtual Machine with the latest CKAN (2.0) ready to go. This is
 only intended for development.
+
+Versions used
+-------------
+
+Vagrant 2 (v1.1.0)
+Ubuntu 12.04 64bit (precise64)
+CKAN release-2.0 branch
 
 Quickstart
 ----------
@@ -17,9 +24,10 @@ dependencies, and run its tests. Go grab a coffee and let it run.
 After it's finished, do:
 
     $ vagrant ssh
-    $ source ~/pyenv/bin/activate
-    $ cd ~/pyenv/src/ckan
-    $ paster serve development.ini
+
+    $ source /home/ckan/pyenv/bin/activate
+    $ cd /home/ckan/pyenv/src/ckan
+    $ sudo paster serve development.ini
 
 You can check http://localhost:5000 to see if everything went well. You should
 see your newly created CKAN installation. Now you can start playing :)
