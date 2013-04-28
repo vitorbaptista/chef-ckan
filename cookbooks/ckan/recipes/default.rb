@@ -54,6 +54,11 @@ pg_database "ckantest" do
   encoding "utf8"
 end
 
+pg_database "ckan_dev" do
+  owner "ckanuser"
+  encoding "utf8"
+end
+
 # Install and configure Solr
 package "solr-jetty"
 template "/etc/default/jetty" do
