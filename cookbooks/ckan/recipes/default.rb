@@ -50,8 +50,17 @@ pg_user "ckanuser" do
 end
 
 pg_database "ckantest" do
-  owner "ckanuser"
-  encoding "utf8"
+  encoding    "utf8"
+  locale      "en_US.utf8"
+  owner       "ckanuser"
+  template    "template0"
+end
+
+pg_database "ckan_dev" do
+  encoding    "utf8"
+  locale      "en_US.utf8"
+  owner       "ckanuser"
+  template    "template0"
 end
 
 # Install and configure Solr
