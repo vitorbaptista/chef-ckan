@@ -2,7 +2,8 @@ USER = node[:user]
 HOME = "/home/#{USER}"
 ENV['VIRTUAL_ENV'] = "#{HOME}/pyenv"
 ENV['PATH'] = "#{ENV['VIRTUAL_ENV']}/bin:#{ENV['PATH']}"
-SOURCE_DIR = "#{ENV['VIRTUAL_ENV']}/src/ckan"
+SOURCE_DIR = "#{ENV['VIRTUAL_ENV']}/src"
+CKAN_DIR = "#{SOURCE_DIR}/ckan"
 
 # Create Database
 pg_user "ckanuser" do
@@ -23,24 +24,24 @@ end
 # Configure database variables
 execute "Set up datastore database's urls" do
   user USER
-  cwd SOURCE_DIR
+  cwd CKAN_DIR
   command "sed -i -e 's/.*datastore.write_url.*/ckan.datastore.write_url=postgresql:\\/\\/ckanuser:pass@localhost\\/datastore/;s/.*datastore.read_url.*/ckan.datastore.read_url=postgresql:\\/\\/readonlyuser:pass@localhost\\/datastore/' development.ini"
 end
 
 # Set permissions
 execute "don't ask for postgres password when setting database's permissions" do
   user USER
-  cwd "#{SOURCE_DIR}/ckanext/datastore/bin"
+  cwd "#{CKAN_DIR}/ckanext/datastore/bin"
   command "sed -i -e 's/-W//g' datastore_setup.py"
 end
 
 execute "set permissions" do
-  cwd SOURCE_DIR
+  cwd CKAN_DIR
   command "paster datastore set-permissions postgres"
 end
 
 execute "run other tests" do
   user USER
-  cwd SOURCE_DIR
+  cwd CKAN_DIR
   command "nosetests --ckan --with-pylons=test-core.ini --nologcapture --cover-package=ckanext.datastore ckanext/datastore/tests -x"
 end

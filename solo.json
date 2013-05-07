@@ -5,6 +5,7 @@
     "recipe[ckan::ckanext]"
   ],
   "user": "ckan",
+  "repository": "https://github.com/okfn/ckan.git",
   "postgresql": {
     "version": "9.1",
     "ssl": false
